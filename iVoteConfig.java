@@ -3,7 +3,7 @@ import java.util.Hashtable;
 
 public class iVoteConfig implements VotingService
 {
-	Hashtable<Integer, String> table = new Hashtable<Integer, String>();
+	Hashtable<Integer, String> idTable = new Hashtable<Integer, String>();
 
 	private int[] IDs;
 	
@@ -13,29 +13,44 @@ public class iVoteConfig implements VotingService
 	{
 		this.IDs = IDs;
 	}
+	
+	public void submitedAnswers(Hashtable<Integer, String> studentAnswers)
+	{
+		this.idTable = studentAnswers;
+	}
+
+	
+	public void displayQuestion(Question question)
+	{
+		System.out.println(question.getQuestion());
+	}
+
+	public void countNumberOfSubmissions(int n)
+	{
+		this.submissionTotal = n;
+	}
 
 	public void answerCount(int answers) 
 	{
-		
 		int A = 0, B = 0, C = 0, D = 0;
 
-		for (int a = 0; a < IDs.length; a++) 
+		for(int a = 0; a < IDs.length; a++) 
 		{
-			for (int b = 0; b < table.get(IDs[a]).length(); b++)
+			for(int b = 0; b < idTable.get(IDs[a]).length(); b++)
 			{
-				if (table.get(IDs[a]).charAt(b) == 'A') 
+				if(idTable.get(IDs[a]).charAt(b) == 'A') 
 				{
 					A++;
 				}
-				if (table.get(IDs[a]).charAt(b) == 'B') 
+				if(idTable.get(IDs[a]).charAt(b) == 'B') 
 				{
 					B++;
 				}
-				if (table.get(IDs[a]).charAt(b) == 'C') 
+				if(idTable.get(IDs[a]).charAt(b) == 'C') 
 				{
 					C++;
 				}
-				if (table.get(IDs[a]).charAt(b) == 'D') 
+				if(idTable.get(IDs[a]).charAt(b) == 'D') 
 				{
 					D++;
 				}
@@ -45,17 +60,17 @@ public class iVoteConfig implements VotingService
 		if(answers == 2)
 		{
 			System.out.println("Total answers: ");
-			System.out.println("A: " + A + "\nB: " + B + "\n");
+			System.out.println("A: " + A + " | B: " + B + "\n");
 		}
-		else if (answers == 3)
+		else if(answers == 3)
 		{
 			System.out.println("Total answers: ");
-			System.out.println("A: " + A + "\nB: " + B + "\nC: " + C + "\n");
+			System.out.println("A: " + A + " | B: " + B + " | C: " + C + "\n");
 		} 
-		else if (answers == 4)
+		else if(answers == 4)
 		{
 			System.out.println("Total answers: ");
-			System.out.println("A: " + A + "\nB: " + B + "\nC: " + C + "\nD: " + D + "\n");
+			System.out.println("A: " + A + " | B: " + B + " | C: " + C + " | D: " + D + "\n");
 		} 
 	}
 
@@ -63,37 +78,22 @@ public class iVoteConfig implements VotingService
 	{
 		int totalRight = 0;
 		int totalWrong = 0;
-		for (int a = 0; a < numberOfStudents; a++)
+		for(int a = 0; a < numberOfStudents; a++)
 		{
-			if (question.getAnswer().equals(table.get(IDs[a]))) 
+			if(question.getAnswer().equals(idTable.get(IDs[a]))) 
 			{
-				System.out.println("Student" + "(" + IDs[a] + ") selected " + table.get(IDs[a]) + ", and got it right!\n");
+				System.out.println("Student" + "(" + IDs[a] + ") selected " + idTable.get(IDs[a]) + ", and got it right!\n");
 				totalRight++;
 			} 
 			else 
 			{
-				System.out.println("Student" + "(" + IDs[a] + ") selected " + table.get(IDs[a]) + ", and got it wrong.\n");
+				System.out.println("Student" + "(" + IDs[a] + ") selected " + idTable.get(IDs[a]) + ", and got it wrong.\n");
 				totalWrong++;
 			}
 		}
-	
-		System.out.println("Total right answers: " + totalRight + "\n");
-		System.out.println("Total wrong answers: " + totalWrong + "\n");
-	}
-
-	public void submitedAnswers(Hashtable<Integer, String> studentAnswers)
-	{
-		this.table = studentAnswers;
-	}
-
-	public void displayQuestion(Question question)
-	{
-		System.out.println(question.getQuestion());
-	}
-
-	public void countNumberOfSubmissions(int n)
-	{
-		this.submissionTotal = n;
+		
+		System.out.println("The correct answer was: " + question.getAnswer() + ".\n");
+		System.out.println("Students with right answers: " + totalRight + " | Students with wrong answers: " + totalWrong + "\n");
 	}
 
 	public void displaySubmissions(int ID)

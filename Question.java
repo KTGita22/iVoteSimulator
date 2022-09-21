@@ -1,4 +1,9 @@
 
+/* Create Question class, where a Question object contains 
+   strings of the question and the answer to it. Includes
+   getter and setter methods.
+*/ 
+
 public class Question 
 {
 	private String question;
@@ -10,23 +15,23 @@ public class Question
 		this.setAnswer(answer);
 	}
 
-	public String getQuestion() 
-	{
-		return question;
-	}
-
 	public void setQuestion(String question) 
 	{
 		this.question = question;
 	}
 
+	public void setAnswer(String answer) 
+	{
+		this.answer = answer;
+	}
+	
 	public String getAnswer() 
 	{
 		return answer;
 	}
-
-	public void setAnswer(String answer) 
+	
+	public String getQuestion() 
 	{
-		this.answer = answer;
+		return question;
 	}
 }

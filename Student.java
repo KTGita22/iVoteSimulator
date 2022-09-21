@@ -3,8 +3,8 @@
 
 public class Student 
 {
-	private int id;
-	protected String answer;
+	private int studentID;
+	private String studentAnswer;
 	
 	public Student(int id)
 	{
@@ -13,35 +13,36 @@ public class Student
 
 	public int getId() 
 	{
-		return id;
+		return studentID;
 	}
 
 	public void setId(int id) 
 	{
-		this.id = id;
+		this.studentID = id;
+	}
+	
+	public String getStudentAnswer()
+	{
+		return studentAnswer;
 	}
 	
 	public void chooseAnswer(int number)
 	{
-		this.answer = "" + (char) ((int) (Math.random() * number) + 65);	
+		// Randomly assign studentAnswer with A, B, C, or D based on number of answers the question has.
+		this.studentAnswer = "" + (char) ((int) (Math.random() * number) + 65);	
 	}
-
-	public void chooseMultiple(int number)
+	
+	public void chooseMultipleAnswers(int number)
 	{
 		String s = "";
 		for (int a = 0; a < number; a++)
 		{
-			if (headsOrTails())
+			// If random number is 0, add letter to student's answer.
+			if ((int)(Math.random() * 2) == 0)
 			{
 				s += (char)(a + 65);
 			}
 		}
-		answer = s;
-	}
-	
-	public boolean headsOrTails()
-	{
-		int randomNumber = (int) (Math.random() * 2);
-		return randomNumber == 0;
+		studentAnswer = s;
 	}
 }
