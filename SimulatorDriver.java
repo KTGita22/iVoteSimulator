@@ -61,6 +61,8 @@ public class SimulatorDriver
 			count = 0;
 			randomNumber = (int) ((Math.random() * 10) + 1);
 		}
+		
+		System.out.println("---------------------------------------------------------\n");
 		ivote.displayCorrectAnswer(question1, totalStudents);
 		ivote.answerCount(2);
 		printNext(questionStage);
@@ -84,6 +86,7 @@ public class SimulatorDriver
 			randomNumber = (int) ((Math.random() * 10) + 1);
 		}
 		
+		System.out.println("---------------------------------------------------------\n");
 		ivote.displayCorrectAnswer(question2, totalStudents);
 		ivote.answerCount(3);
 		printNext(questionStage);
@@ -106,7 +109,9 @@ public class SimulatorDriver
 			ivote.displaySubmissions(studentID[a]);
 			count = 0;
 			randomNumber = (int) ((Math.random() * 10) + 1);
-		}		
+		}
+		
+		System.out.println("---------------------------------------------------------\n");
 		ivote.displayCorrectAnswer(question3, totalStudents);
 		ivote.answerCount(4);
 		printNext(questionStage);
@@ -129,7 +134,9 @@ public class SimulatorDriver
 			ivote.displaySubmissions(studentID[a]);
 			count = 0;
 			randomNumber = (int) ((Math.random() * 10) + 1);
-		}		
+		}
+		
+		System.out.println("---------------------------------------------------------\n");
 		ivote.displayCorrectAnswer(question4, totalStudents);
 		ivote.answerCount(4);
 		questionStage = 2;
@@ -153,7 +160,9 @@ public class SimulatorDriver
 			ivote.displaySubmissions(studentID[a]);
 			count = 0;
 			randomNumber = (int) ((Math.random() * 10) + 1);
-		}		
+		}
+		
+		System.out.println("---------------------------------------------------------\n");
 		ivote.displayCorrectAnswer(question5, totalStudents);
 		ivote.answerCount(4);
 		questionStage = 3;
@@ -183,7 +192,8 @@ public class SimulatorDriver
 		return hash;
 	}
 	
-	public static void printNext(int qStage) 
+	// Print text to divide questions.
+	private static void printNext(int qStage) 
 	{	
 		if(qStage == 1)
 		{

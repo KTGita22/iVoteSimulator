@@ -1,7 +1,12 @@
 
+/* iVote Service Configuration. Handle functions of
+ * displaying questions, counting number of submissions,
+ * and displaying results.
+ */
+
 import java.util.Hashtable;
 
-public class iVoteConfig implements VotingService
+public class iVoteConfig implements iVoteVotingService
 {
 	Hashtable<Integer, String> idTable = new Hashtable<Integer, String>();
 
@@ -18,7 +23,6 @@ public class iVoteConfig implements VotingService
 	{
 		this.idTable = studentAnswers;
 	}
-
 	
 	public void displayQuestion(Question question)
 	{
@@ -29,7 +33,8 @@ public class iVoteConfig implements VotingService
 	{
 		this.submissionTotal = n;
 	}
-
+	
+	// Count number of answers from student list.
 	public void answerCount(int answers) 
 	{
 		int A = 0, B = 0, C = 0, D = 0;
@@ -57,6 +62,7 @@ public class iVoteConfig implements VotingService
 			}
 		}
 		
+		// Print specific format based on number of answers.
 		if(answers == 2)
 		{
 			System.out.println("Total answers: ");
@@ -74,6 +80,7 @@ public class iVoteConfig implements VotingService
 		} 
 	}
 
+	// Display the student's last submitted answer and show if it was correct or not.
 	public void displayCorrectAnswer(Question question, int numberOfStudents) 
 	{
 		int totalRight = 0;
@@ -92,13 +99,15 @@ public class iVoteConfig implements VotingService
 			}
 		}
 		
+		// Show correct answer of the question and the number of students who got it right and wrong.
 		System.out.println("The correct answer was: " + question.getAnswer() + ".\n");
 		System.out.println("Students with right answers: " + totalRight + " | Students with wrong answers: " + totalWrong + "\n");
 	}
 
+	// Display number of times the student submitted before submitting their last answer.
 	public void displaySubmissions(int ID)
 	{
-		if (submissionTotal == 1)
+		if(submissionTotal == 1)
 		{
 			System.out.println("Student(" + ID + ") submitted answer: " + submissionTotal + " time.\n");
 		} 
